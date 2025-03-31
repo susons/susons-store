@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
+import ProductList from "@/components/shared/product/product-list";
+import { getLatestProducts } from "@/lib/actions/product.actions";
 
-const Homepage = () => {
+const Homepage = async () => {
+  const latestProducts = await getLatestProducts();
   return (
     <>
-      homepage<Button>button</Button>
+      <ProductList data={latestProducts} title="Newest arrivals" />
     </>
   );
 };
